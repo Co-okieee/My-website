@@ -83,25 +83,25 @@ function App() {
     {
       name: 'Alex Chen',
       role: 'CEO & Lead Developer',
-      photo: '/photo.jpg',
+      photo: '/photo1.jpg',
       description: 'Full-stack developer with 8+ years of experience in building scalable web applications.'
     },
     {
       name: 'Sarah Johnson',
       role: 'Creative Director',
-      photo: '/photo.jpg',
+      photo: '/photo1.jpg',
       description: 'Award-winning designer specializing in UI/UX and brand identity with a passion for innovation.'
     },
     {
       name: 'Michael Wong',
       role: 'Tech Lead',
-      photo: '/photo.jpg',
+      photo: '/photo1.jpg',
       description: 'Expert in React, Node.js, and cloud architecture with a focus on performance optimization.'
     },
     {
       name: 'Emily Davis',
       role: 'Project Manager',
-      photo: '/photo.jpg',
+      photo: '/photo1.jpg',
       description: 'Experienced PM ensuring smooth project delivery and client satisfaction through agile methodologies.'
     }
   ];
