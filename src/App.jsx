@@ -83,25 +83,25 @@ function App() {
     {
       name: 'Alex Chen',
       role: 'CEO & Lead Developer',
-      emoji: '👨‍💼',
+      photo: '/photo.jpg',
       description: 'Full-stack developer with 8+ years of experience in building scalable web applications.'
     },
     {
       name: 'Sarah Johnson',
       role: 'Creative Director',
-      emoji: '👩‍🎨',
+      photo: '/photo.jpg',
       description: 'Award-winning designer specializing in UI/UX and brand identity with a passion for innovation.'
     },
     {
       name: 'Michael Wong',
       role: 'Tech Lead',
-      emoji: '👨‍💻',
+      photo: '/photo.jpg',
       description: 'Expert in React, Node.js, and cloud architecture with a focus on performance optimization.'
     },
     {
       name: 'Emily Davis',
       role: 'Project Manager',
-      emoji: '👩‍💼',
+      photo: '/photo.jpg',
       description: 'Experienced PM ensuring smooth project delivery and client satisfaction through agile methodologies.'
     }
   ];
@@ -193,7 +193,7 @@ function App() {
           {team.map((member, index) => (
             <div key={index} className="team-card" style={{animationDelay: `${index * 0.15}s`}}>
               <div className="team-image">
-                <span style={{fontSize: '6rem'}}>{member.emoji}</span>
+                <img src={member.photo} alt={member.name}  className="team-photo"/>
               </div>
               <div className="team-info">
                 <h3>{member.name}</h3>
