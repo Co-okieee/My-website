@@ -1,4 +1,5 @@
-/* Animated Background */
+/* ========== 星空粒子背景 - 完整替换 .animated-bg 部分 ========== */
+
 .animated-bg {
   position: fixed;
   top: 0;
@@ -6,34 +7,134 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(45deg, #0f172a, #1e293b, #0f172a);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: radial-gradient(ellipse at bottom, #1a1f3a 0%, #0a0e27 100%);
+  overflow: hidden;
 }
 
-@keyframes gradientShift {
+/* 星星层 - 小星星（更密集） */
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 10% 10%, white, transparent),
+    radial-gradient(1px 1px at 20% 15%, white, transparent),
+    radial-gradient(2px 2px at 30% 20%, white, transparent),
+    radial-gradient(1px 1px at 40% 25%, white, transparent),
+    radial-gradient(1px 1px at 50% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 35%, white, transparent),
+    radial-gradient(1px 1px at 70% 40%, white, transparent),
+    radial-gradient(1px 1px at 80% 45%, white, transparent),
+    radial-gradient(2px 2px at 90% 50%, white, transparent),
+    radial-gradient(1px 1px at 15% 55%, white, transparent),
+    radial-gradient(1px 1px at 25% 60%, white, transparent),
+    radial-gradient(2px 2px at 35% 65%, white, transparent),
+    radial-gradient(1px 1px at 45% 70%, white, transparent),
+    radial-gradient(1px 1px at 55% 75%, white, transparent),
+    radial-gradient(2px 2px at 65% 80%, white, transparent),
+    radial-gradient(1px 1px at 75% 85%, white, transparent),
+    radial-gradient(1px 1px at 85% 90%, white, transparent),
+    radial-gradient(2px 2px at 95% 95%, white, transparent),
+    radial-gradient(1px 1px at 12% 48%, white, transparent),
+    radial-gradient(1px 1px at 22% 52%, white, transparent),
+    radial-gradient(1px 1px at 32% 58%, white, transparent),
+    radial-gradient(2px 2px at 42% 62%, white, transparent),
+    radial-gradient(1px 1px at 52% 68%, white, transparent),
+    radial-gradient(1px 1px at 62% 72%, white, transparent),
+    radial-gradient(2px 2px at 72% 78%, white, transparent),
+    radial-gradient(1px 1px at 82% 82%, white, transparent),
+    radial-gradient(1px 1px at 92% 88%, white, transparent),
+    radial-gradient(1px 1px at 5% 25%, white, transparent),
+    radial-gradient(2px 2px at 18% 38%, white, transparent),
+    radial-gradient(1px 1px at 28% 42%, white, transparent),
+    radial-gradient(1px 1px at 38% 48%, white, transparent),
+    radial-gradient(2px 2px at 48% 52%, white, transparent),
+    radial-gradient(1px 1px at 58% 58%, white, transparent),
+    radial-gradient(1px 1px at 68% 62%, white, transparent),
+    radial-gradient(2px 2px at 78% 68%, white, transparent),
+    radial-gradient(1px 1px at 88% 72%, white, transparent);
+  background-size: 200% 200%;
+  background-position: 0% 0%;
+  animation: twinkle 8s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+/* 星星层 - 蓝色发光星（更多） */
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle, rgba(14, 165, 233, 0.6) 0%, transparent 2px),
+    radial-gradient(circle, rgba(6, 182, 212, 0.5) 0%, transparent 2px),
+    radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 2px),
+    radial-gradient(circle, rgba(14, 165, 233, 0.7) 0%, transparent 3px),
+    radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, transparent 2px),
+    radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, transparent 2px),
+    radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 2px),
+    radial-gradient(circle, rgba(6, 182, 212, 0.7) 0%, transparent 3px),
+    radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 2px),
+    radial-gradient(circle, rgba(14, 165, 233, 0.5) 0%, transparent 2px);
+  background-size: 
+    300px 300px,
+    250px 250px,
+    350px 350px,
+    400px 400px,
+    280px 280px,
+    320px 320px,
+    360px 360px,
+    420px 420px,
+    290px 290px,
+    330px 330px;
+  background-position: 
+    10% 20%,
+    70% 50%,
+    40% 80%,
+    85% 30%,
+    25% 45%,
+    55% 65%,
+    15% 75%,
+    75% 15%,
+    45% 35%,
+    65% 85%;
+  animation: floatStars 20s ease-in-out infinite;
+}
+
+@keyframes gradientWave {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Floating Particles */
-.particle {
-  position: absolute;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.8), transparent);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float 20s infinite ease-in-out;
+@keyframes floatCircles {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  33% { 
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.8;
+  }
+  66% { 
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.9;
+  }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.5; }
-  25% { transform: translateY(-100px) translateX(50px) scale(1.2); opacity: 0.8; }
-  50% { transform: translateY(-200px) translateX(-50px) scale(0.9); opacity: 0.6; }
-  75% { transform: translateY(-100px) translateX(-100px) scale(1.1); opacity: 0.7; }
+@keyframes movePattern {
+  0% { background-position: 0 0, 0 0, 40px 70px, 40px 70px; }
+  100% { background-position: 80px 140px, 80px 140px, 120px 210px, 120px 210px; }
 }
 
-/* Navigation */
+/* 导航栏 - 液态玻璃效果 */
 .navbar {
   position: fixed;
   top: 0;
@@ -43,28 +144,56 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  background: rgba(15, 23, 42, 0.8);
-  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background: rgba(10, 14, 39, 0.1);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 8px 40px rgba(14, 165, 233, 0.15);
   transition: all 0.3s ease;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.1) 0%,
+    rgba(6, 182, 212, 0.05) 50%,
+    rgba(59, 130, 246, 0.1) 100%
+  );
+  opacity: 0.5;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.navbar:hover::before {
+  opacity: 0.8;
 }
 
 .navbar.scrolled {
   padding: 1rem 5%;
-  background: rgba(15, 23, 42, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(10, 14, 39, 0.5);
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  box-shadow: 0 8px 40px rgba(14, 165, 233, 0.15);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.2);
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
   font-family: 'Space Grotesk', sans-serif;
   cursor: pointer;
   transition: transform 0.3s ease;
+  position: relative;
 }
 
 .logo:hover {
@@ -78,7 +207,7 @@
 }
 
 .nav-links a {
-  color: #e2e8f0;
+  color: #e0f2fe;
   text-decoration: none;
   font-weight: 500;
   position: relative;
@@ -92,19 +221,19 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #667eea;
+  color: #0ea5e9 !important;
 }
 
 .nav-links a:hover::after {
   width: 100%;
 }
 
-/* Hero Section */
+/* Hero 区域 */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -116,9 +245,28 @@
   overflow: hidden;
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.15), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: heroGlow 6s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
 .hero-content {
   max-width: 900px;
   animation: fadeInUp 1s ease;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadeInUp {
@@ -136,24 +284,22 @@
   font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f0f9ff !important;
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1.2;
-  animation: gradientText 3s ease infinite;
-  background-size: 200% 200%;
+  text-shadow: 0 0 60px rgba(14, 165, 233, 0.5);
 }
 
-@keyframes gradientText {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.hero h1 span {
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
 .hero p {
   font-size: 1.5rem;
-  color: #cbd5e1;
+  color: #bae6fd !important;
   margin-bottom: 2.5rem;
   line-height: 1.6;
 }
@@ -170,7 +316,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -178,9 +324,9 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
+  color: white !important;
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -202,22 +348,23 @@
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 15px 40px rgba(14, 165, 233, 0.5);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  background: rgba(14, 165, 233, 0.1) !important;
+  color: #0ea5e9 !important;
+  border: 2px solid #0ea5e9 !important;
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(14, 165, 233, 0.2) !important;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
 }
 
-/* Section Styles */
+/* Section 样式 */
 section {
   padding: 6rem 5%;
   position: relative;
@@ -232,21 +379,32 @@ section {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f0f9ff !important;
   font-family: 'Space Grotesk', sans-serif;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  border-radius: 2px;
 }
 
 .section-header p {
   font-size: 1.2rem;
-  color: #94a3b8;
+  color: #7dd3fc !important;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 1.5rem auto 0;
 }
 
-/* Services Grid */
+/* 服务卡片 */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -256,10 +414,10 @@ section {
 }
 
 .service-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+  background: rgba(10, 14, 39, 0.5);
   padding: 2.5rem;
   border-radius: 20px;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   transition: all 0.3s ease;
   cursor: pointer;
   backdrop-filter: blur(10px);
@@ -270,55 +428,56 @@ section {
 .service-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .service-card:hover::before {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
+  background: rgba(10, 14, 39, 0.8);
 }
 
 .service-icon {
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
   font-size: 2rem;
-  animation: iconFloat 3s ease-in-out infinite;
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+  transition: transform 0.3s ease;
 }
 
-@keyframes iconFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.service-card:hover .service-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .service-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #f1f5f9;
+  color: #f0f9ff !important;
 }
 
 .service-card p {
-  color: #94a3b8;
+  color: #7dd3fc !important;
   line-height: 1.6;
 }
 
-/* Team Grid */
+/* 团队卡片 */
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -328,25 +487,25 @@ section {
 }
 
 .team-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+  background: rgba(10, 14, 39, 0.5);
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   transition: all 0.3s ease;
   cursor: pointer;
   backdrop-filter: blur(10px);
 }
 
 .team-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+  transform: translateY(-10px);
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
 }
 
 .team-image {
   width: 100%;
   height: 350px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,33 +522,35 @@ section {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
-  animation: imageShine 4s linear infinite;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s linear infinite;
 }
 
-@keyframes imageShine {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes shine {
+  from { transform: translateX(-100%) rotate(45deg); }
+  to { transform: translateX(100%) rotate(45deg); }
 }
 
 .team-info {
   padding: 2rem;
+  background: rgba(10, 14, 39, 0.8);
 }
 
 .team-info h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #f1f5f9;
+  color: #f0f9ff !important;
 }
 
 .team-info .role {
-  color: #667eea;
+  color: #0ea5e9 !important;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .team-info p {
-  color: #94a3b8;
+  color: #7dd3fc !important;
   line-height: 1.6;
   font-size: 0.95rem;
 }
@@ -404,36 +565,45 @@ section {
 }
 
 .mv-card {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.8));
+  background: rgba(10, 14, 39, 0.5);
   padding: 3rem;
   border-radius: 20px;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.mv-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #0ea5e9, #06b6d4);
+  border-radius: 20px 0 0 20px;
 }
 
 .mv-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+  transform: translateX(10px);
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
 }
 
 .mv-card h3 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #f0f9ff !important;
 }
 
 .mv-card p {
-  color: #cbd5e1;
+  color: #bae6fd !important;
   line-height: 1.8;
   font-size: 1.1rem;
 }
 
-/* Contact Form */
+/* 联系表单 */
 .contact-content {
   max-width: 600px;
   margin: 0 auto;
@@ -452,17 +622,17 @@ section {
 }
 
 .form-group label {
-  color: #e2e8f0;
+  color: #e0f2fe !important;
   font-weight: 500;
 }
 
 .form-group input,
 .form-group textarea {
   padding: 1rem;
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(10, 14, 39, 0.5);
+  border: 1px solid rgba(14, 165, 233, 0.3);
   border-radius: 10px;
-  color: #f1f5f9;
+  color: #f0f9ff !important;
   font-size: 1rem;
   transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
@@ -471,8 +641,9 @@ section {
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  background: rgba(10, 14, 39, 0.8);
 }
 
 .form-group textarea {
@@ -482,10 +653,10 @@ section {
 
 /* Footer */
 .footer {
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(10, 14, 39, 0.95);
   padding: 3rem 5%;
   text-align: center;
-  border-top: 1px solid rgba(99, 102, 241, 0.2);
+  border-top: 1px solid rgba(14, 165, 233, 0.2);
 }
 
 .footer-content {
@@ -494,7 +665,7 @@ section {
 }
 
 .footer p {
-  color: #94a3b8;
+  color: #7dd3fc !important;
   margin-bottom: 1rem;
 }
 
@@ -508,23 +679,23 @@ section {
 .social-links a {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4) !important;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: white !important;
   text-decoration: none;
   transition: all 0.3s ease;
   font-size: 1.3rem;
 }
 
 .social-links a:hover {
-  transform: translateY(-5px) rotate(360deg);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5);
 }
 
-/* Responsive */
+/* 响应式 */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -554,11 +725,4 @@ section {
   .cta-buttons {
     flex-direction: column;
   }
-}
-
-.team-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
 }

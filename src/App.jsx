@@ -18,6 +18,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    
   }, []);
 
   const handleSubmit = (e) => {
@@ -114,7 +115,7 @@ function App() {
       <section id="home" className="hero">
         <div className="hero-content">
           <h1>
-            Crafting <span>Digital Excellence</span>
+            Crafting <span style={{background: 'linear-gradient(135deg, #0ea5e9, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Digital Excellence</span>
           </h1>
           <p>
             We transform ideas into stunning web experiences that drive results. 
