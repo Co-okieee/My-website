@@ -5,19 +5,21 @@
 }
 
 :root {
-  --primary: #6366f1;
-  --secondary: #8b5cf6;
-  --accent: #ec4899;
-  --dark: #0f172a;
-  --light: #f8fafc;
-  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary: #f97316;  
+  --secondary: #fb923c; 
+  --accent: #1e40af;  
+  --dark: #0a0e27;
+  --darker: #050714;
+  --light: #f0f9ff;
+  --gradient: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  --glow: rgba(14, 165, 233, 0.5);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--dark);
+  background: var(--darker);
   color: var(--light);
   overflow-x: hidden;
 }
@@ -36,14 +38,14 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #0a0e27;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #667eea, #764ba2);
+  background: linear-gradient(180deg, #0ea5e9, #06b6d4);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #764ba2, #667eea);
+  background: linear-gradient(180deg, #06b6d4, #0ea5e9);
 }

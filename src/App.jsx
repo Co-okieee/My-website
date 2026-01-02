@@ -18,19 +18,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Create floating particles
-    const particlesContainer = document.querySelector('.animated-bg');
-    for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.width = Math.random() * 100 + 50 + 'px';
-      particle.style.height = particle.style.width;
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 20 + 's';
-      particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-      particlesContainer.appendChild(particle);
-    }
   }, []);
 
   const handleSubmit = (e) => {
@@ -83,25 +70,25 @@ function App() {
     {
       name: 'Alex Chen',
       role: 'CEO & Lead Developer',
-      photo: '/photo1.jpg',
+      emoji: '👨‍💼',
       description: 'Full-stack developer with 8+ years of experience in building scalable web applications.'
     },
     {
       name: 'Sarah Johnson',
       role: 'Creative Director',
-      photo: '/photo1.jpg',
+      emoji: '👩‍🎨',
       description: 'Award-winning designer specializing in UI/UX and brand identity with a passion for innovation.'
     },
     {
       name: 'Michael Wong',
       role: 'Tech Lead',
-      photo: '/photo1.jpg',
+      emoji: '👨‍💻',
       description: 'Expert in React, Node.js, and cloud architecture with a focus on performance optimization.'
     },
     {
       name: 'Emily Davis',
       role: 'Project Manager',
-      photo: '/photo1.jpg',
+      emoji: '👩‍💼',
       description: 'Experienced PM ensuring smooth project delivery and client satisfaction through agile methodologies.'
     }
   ];
@@ -126,7 +113,9 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1>Crafting Digital Excellence</h1>
+          <h1>
+            Crafting <span>Digital Excellence</span>
+          </h1>
           <p>
             We transform ideas into stunning web experiences that drive results. 
             Your vision, our expertise, limitless possibilities.
@@ -193,7 +182,7 @@ function App() {
           {team.map((member, index) => (
             <div key={index} className="team-card" style={{animationDelay: `${index * 0.15}s`}}>
               <div className="team-image">
-                <img src={member.photo} alt={member.name}  className="team-photo"/>
+                <span style={{fontSize: '6rem'}}>{member.emoji}</span>
               </div>
               <div className="team-info">
                 <h3>{member.name}</h3>
