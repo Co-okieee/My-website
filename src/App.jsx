@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -868,17 +869,85 @@ const technologies = [
         <div className="shooting-star"></div>
       </div>
 
-      {/* Navigation */}
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="logo" onClick={() => setCurrentPage('home')}>TechVision</div>
-        <ul className="nav-links">
-        <li><a onClick={(e) => { e.preventDefault(); setCurrentPage('home'); }} className={currentPage === 'home' ? 'active' : ''}>Home</a></li>
-        <li><a onClick={(e) => { e.preventDefault(); setCurrentPage('services'); }} className={currentPage === 'services' ? 'active' : ''}>Services</a></li>
-        <li><a onClick={(e) => { e.preventDefault(); setCurrentPage('about'); }} className={currentPage === 'about' ? 'active' : ''}>About</a></li>
-        <li><a onClick={(e) => { e.preventDefault(); setCurrentPage('team'); }} className={currentPage === 'team' ? 'active' : ''}>Team</a></li>
-        <li><a onClick={(e) => { e.preventDefault(); setCurrentPage('contact'); }} className={currentPage === 'contact' ? 'active' : ''}>Contact</a></li>
-        </ul>
-      </nav>
+{/* Navigation */}
+<nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+  <div className="logo" onClick={() => setCurrentPage('home')}>
+    TechVision
+  </div>
+  
+  {/* 🆕 汉堡菜单按钮（仅移动端显示） */}
+  <button 
+    className="mobile-menu-toggle"
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    aria-label="Toggle menu"
+  >
+    <span className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}></span>
+  </button>
+  
+  {/* 导航链接 */}
+  <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+    <li>
+      <a 
+        onClick={(e) => { 
+          e.preventDefault(); 
+          setCurrentPage('home'); 
+          setMobileMenuOpen(false); // 🆕 点击后关闭菜单
+        }} 
+        className={currentPage === 'home' ? 'active' : ''}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a 
+        onClick={(e) => { 
+          e.preventDefault(); 
+          setCurrentPage('services'); 
+          setMobileMenuOpen(false);
+        }} 
+        className={currentPage === 'services' ? 'active' : ''}
+      >
+        Services
+      </a>
+    </li>
+    <li>
+      <a 
+        onClick={(e) => { 
+          e.preventDefault(); 
+          setCurrentPage('about'); 
+          setMobileMenuOpen(false);
+        }} 
+        className={currentPage === 'about' ? 'active' : ''}
+      >
+        About
+      </a>
+    </li>
+    <li>
+      <a 
+        onClick={(e) => { 
+          e.preventDefault(); 
+          setCurrentPage('team'); 
+          setMobileMenuOpen(false);
+        }} 
+        className={currentPage === 'team' ? 'active' : ''}
+      >
+        Team
+      </a>
+    </li>
+    <li>
+      <a 
+        onClick={(e) => { 
+          e.preventDefault(); 
+          setCurrentPage('contact'); 
+          setMobileMenuOpen(false);
+        }} 
+        className={currentPage === 'contact' ? 'active' : ''}
+      >
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
 
       {/* 动态渲染当前页面 */}
       {renderPage()}
