@@ -318,12 +318,14 @@
 /* 汉堡菜单按钮 - 默认隐藏 */
 .mobile-menu-toggle {
   display: none;
-  background: none;
-  border: none;
+  background: rgba(14, 165, 233, 0.1);
+  border: 2px solid rgba(14, 165, 233, 0.3);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001;
+  padding: 0.7rem;
+  z-index: 10001;  /* 👈 提高层级 */
   position: relative;
+  transition: all 0.3s ease;
 }
 
 /* 汉堡图标 */
@@ -376,42 +378,63 @@
     display: block;
   }
   
-  /* 隐藏导航链接（默认） */
+  /* 🔒 关键：隐藏导航链接(默认) */
   .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
-    background: rgba(10, 14, 39, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-left: 2px solid rgba(14, 165, 233, 0.3);
-    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
-    transition: right 0.4s ease;
-    padding: 2rem;
-    z-index: 999;
+    display: flex !important;  /* 👈 关键：必须显示 */
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;  /* 👈 默认在右边外面 */
+    width: 30% !important;
+    max-width: 300px !important;
+    height: 100vh !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 2rem !important;
+    background: rgba(10, 14, 39, 0.98) !important;  /* 👈 确保背景不透明 */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-left: 2px solid rgba(14, 165, 233, 0.5) !important;  /* 👈 加强边框 */
+    box-shadow: -4px 0 30px rgba(0, 0, 0, 0.7) !important;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;  /* 👈 平滑过渡 */
+    padding: 1rem !important;
+    z-index: 10000 !important;  /* 👈 必须高于光标(9999) */
+    overflow-y: auto !important;  /* 👈 如果内容太多可以滚动 */
+    visibility: visible !important;  /* 👈 确保可见 */
   }
   
-  /* 移动菜单打开状态 */
+  /* 🔒 移动菜单打开状态 */
   .nav-links.mobile-open {
-    right: 0;
+    right: 0 !important;  /* 👈 添加 !important 确保生效 */
+    display: flex !important;  /* 👈 再次确保显示 */
   }
   
   /* 移动端链接样式 */
   .nav-links li {
     width: 100%;
     text-align: center;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInLinks 0.4s ease forwards;
+  }
+  
+  .nav-links.mobile-open li:nth-child(1) { animation-delay: 0.1s; }
+  .nav-links.mobile-open li:nth-child(2) { animation-delay: 0.15s; }
+  .nav-links.mobile-open li:nth-child(3) { animation-delay: 0.2s; }
+  .nav-links.mobile-open li:nth-child(4) { animation-delay: 0.25s; }
+  .nav-links.mobile-open li:nth-child(5) { animation-delay: 0.3s; }
+  
+  @keyframes slideInLinks {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
   
   .nav-links a {
     font-size: 1.2rem;
     display: block;
     padding: 1rem;
+    color: #e0f2fe !important;  /* 👈 确保文字可见 */
   }
   
   .nav-links a::after {

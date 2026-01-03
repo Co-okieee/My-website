@@ -94,7 +94,6 @@ function App() {
     features: [
       'Mobile-First Design',
       'Cross-Browser Compatibility',
-      'Adaptive Layout Systems',
       'Device Testing & Optimization'
     ],
     icon: (
@@ -154,8 +153,7 @@ function App() {
     features: [
       'Regular Updates',
       'Security Monitoring',
-      'Performance Optimization',
-      'Technical Support'
+      'Performance Optimization'
     ],
     icon: (
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -876,11 +874,13 @@ const technologies = [
   </div>
   
   {/* 🆕 汉堡菜单按钮（仅移动端显示） */}
-  <button 
-    className="mobile-menu-toggle"
-    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-    aria-label="Toggle menu"
-  >
+<button 
+  className="mobile-menu-toggle"
+  onClick={() => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  }}
+  aria-label="Toggle menu"
+>
     <span className={`hamburger ${mobileMenuOpen ? 'open' : ''}`}></span>
   </button>
   
