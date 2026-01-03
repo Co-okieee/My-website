@@ -1,4 +1,4 @@
-/* ========== 星空粒子背景 - 完整替换 .animated-bg 部分 ========== */
+/* ========== 流星雨背景 ========== */
 
 .animated-bg {
   position: fixed;
@@ -62,50 +62,6 @@
   opacity: 0.9;
 }
 
-/* 星星层 - 蓝色发光星（更多） */
-.animated-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle, rgba(14, 165, 233, 0.6) 0%, transparent 2px),
-    radial-gradient(circle, rgba(6, 182, 212, 0.5) 0%, transparent 2px),
-    radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 2px),
-    radial-gradient(circle, rgba(14, 165, 233, 0.7) 0%, transparent 3px),
-    radial-gradient(circle, rgba(6, 182, 212, 0.6) 0%, transparent 2px),
-    radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, transparent 2px),
-    radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 2px),
-    radial-gradient(circle, rgba(6, 182, 212, 0.7) 0%, transparent 3px),
-    radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 2px),
-    radial-gradient(circle, rgba(14, 165, 233, 0.5) 0%, transparent 2px);
-  background-size: 
-    300px 300px,
-    250px 250px,
-    350px 350px,
-    400px 400px,
-    280px 280px,
-    320px 320px,
-    360px 360px,
-    420px 420px,
-    290px 290px,
-    330px 330px;
-  background-position: 
-    10% 20%,
-    70% 50%,
-    40% 80%,
-    85% 30%,
-    25% 45%,
-    55% 65%,
-    15% 75%,
-    75% 15%,
-    45% 35%,
-    65% 85%;
-  animation: floatStars 20s ease-in-out infinite;
-}
-
 @keyframes twinkle {
   0%, 100% { 
     opacity: 0.9;
@@ -117,25 +73,53 @@
   }
 }
 
-@keyframes floatStars {
-  0%, 100% { 
-    transform: translate(0, 0);
-    opacity: 0.8;
-  }
-  25% { 
-    transform: translate(20px, -20px);
+/* 流星 */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+  animation: shootingStar 3s linear infinite;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(14, 165, 233, 0.8) 30%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  transform-origin: right;
+  border-radius: 2px;
+}
+
+/* @keyframes shootingStar {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
     opacity: 1;
   }
-  50% { 
-    transform: translate(-10px, 10px);
-    opacity: 0.6;
+  70% {
+    opacity: 1;
   }
-  75% { 
-    transform: translate(10px, 20px);
-    opacity: 0.9;
+  100% {
+    transform: translate(-1000px, 1000px) rotate(-45deg);
+    opacity: 0;
   }
 }
 
+.shooting-star:nth-child(1) {
+  top: 10%;
+  right: 10%;
+  animation-delay: 0s;
+  animation-duration: 2.5s;
+}
 
 .shooting-star:nth-child(2) {
   top: 20%;
@@ -184,41 +168,7 @@
   right: 60%;
   animation-delay: 3.5s;
   animation-duration: 2.9s;
-}
-
-/* 蓝色发光星点装饰 */
-.animated-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle, rgba(14, 165, 233, 0.6) 0%, transparent 3px),
-    radial-gradient(circle, rgba(6, 182, 212, 0.5) 0%, transparent 3px),
-    radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 2px);
-  background-size: 
-    400px 400px,
-    350px 350px,
-    450px 450px;
-  background-position: 
-    15% 25%,
-    75% 60%,
-    50% 80%;
-  animation: floatStars 20s ease-in-out infinite;
-}
-
-@keyframes floatStars {
-  0%, 100% { 
-    transform: translate(0, 0);
-    opacity: 0.7;
-  }
-  50% { 
-    transform: translate(30px, -30px);
-    opacity: 1;
-  }
-}
+} */
 
 /* 导航栏 - 液态玻璃效果 */
 .navbar {
@@ -230,11 +180,11 @@
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   background: rgba(10, 14, 39, 0.3);
-  border-bottom:  1px solid rgba(14, 165, 233, 0.2);
-  box-shadow: 0 8px 40px rgba(14, 165, 233, 0.15);
+  box-shadow: 4px 8px 40px rgba(14, 165, 233, 0.15);
+  border-bottom: 4px solid rgba(14, 165, 233, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -265,39 +215,8 @@
   background: rgba(10, 14, 39, 0.5);
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
-  box-shadow: 0 8px 40px rgba(14, 165, 233, 0.15);
-  border-bottom: 1px solid rgba(14, 165, 233, 0.2);
-}
-
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
-}
-
-.navbar:hover::before {
-  opacity: 0.8;
-}
-
-.navbar.scrolled {
-  padding: 1rem 5%;
-  background: rgba(10, 14, 39, 0.4);
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
-  box-shadow: 
-    0 8px 40px rgba(14, 165, 233, 0.15),
-    0 1px 0 0 rgba(14, 165, 233, 0.8) inset;
-  border-bottom: 2px solid rgba(14, 165, 233, 0.6);
-}
-
-.navbar.scrolled::after {
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
-  background: linear-gradient(90deg, 
-    transparent 0%,
-    rgba(14, 165, 233, 1) 20%,
-    rgba(6, 182, 212, 1) 50%,
-    rgba(14, 165, 233, 1) 80%,
-    transparent 100%
-  );
+  box-shadow: 4px 8px 40px rgba(14, 165, 233, 0.15);
+  border-bottom: 4px solid rgba(14, 165, 233, 0.2);
 }
 
 .logo {
@@ -310,7 +229,6 @@
   font-family: 'Space Grotesk', sans-serif;
   cursor: pointer;
   transition: transform 0.3s ease;
-  position: relative;
 }
 
 .logo:hover {
@@ -602,6 +520,82 @@ section {
   line-height: 1.6;
 }
 
+/* Tech List - 新增 */
+.tech-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.tech-list li {
+  background: rgba(10, 14, 39, 0.5);
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  color: #f0f9ff !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-list li::before {
+  content: '⚡';
+  position: absolute;
+  left: 1rem;
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tech-list li:hover {
+  transform: translateY(-5px);
+  border-color: rgba(14, 165, 233, 0.6);
+  box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+  background: rgba(10, 14, 39, 0.8);
+}
+
+.tech-list li:hover::before {
+  opacity: 1;
+}
+
+/* About Description - 新增 */
+.about-description {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem;
+  background: rgba(10, 14, 39, 0.5);
+  border-radius: 20px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.about-description::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #0ea5e9, #06b6d4);
+  border-radius: 20px 0 0 20px;
+}
+
+.about-description p {
+  color: #bae6fd !important;
+  font-size: 1.2rem;
+  line-height: 1.9;
+  text-align: center;
+}
+
 /* 团队卡片 */
 .team-grid {
   display: grid;
@@ -678,6 +672,19 @@ section {
   color: #7dd3fc !important;
   line-height: 1.6;
   font-size: 0.95rem;
+}
+
+/* Team Skills - 新增 */
+.team-info .skills {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(14, 165, 233, 0.2);
+  color: #bae6fd !important;
+  font-size: 0.9rem;
+}
+
+.team-info .skills strong {
+  color: #0ea5e9;
 }
 
 /* Mission & Vision */
@@ -774,6 +781,29 @@ section {
 .form-group textarea {
   resize: vertical;
   min-height: 150px;
+}
+
+/* Contact Info - 新增 */
+.contact-info {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(10, 14, 39, 0.5);
+  border-radius: 20px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.contact-info p {
+  color: #bae6fd !important;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.contact-info strong {
+  color: #0ea5e9;
+  margin-right: 0.5rem;
 }
 
 /* Footer */
