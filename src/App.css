@@ -3070,6 +3070,12 @@
   backdrop-filter: blur(15px);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   animation: fadeInUp 1.2s ease;
+  aspect-ratio: 16 / 9;
+}
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .video-wrapper::before {
@@ -3131,6 +3137,10 @@
   }
   
   .presentation-video {
-    border-radius: 17px;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* ðŸ'ˆ 改这里，适配 iframe */
+    border-radius: 27px;
+    background: #000;
+    border: none;
   }
 }

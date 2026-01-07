@@ -410,14 +410,12 @@ const technologies = [
           </div>
           
           <div className="video-wrapper">
-            <video 
-              className="presentation-video" 
-              controls 
-              poster="/path-to-thumbnail.jpg"
-            >
-              <source src="/presentation.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <iframe 
+              className="presentation-video"
+              src="https://drive.google.com/file/d/1unSAEnHvZxQd7GG7md77lJ4ABpfdqog6/preview"
+              allow="autoplay"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
