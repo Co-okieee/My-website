@@ -401,6 +401,26 @@ const technologies = [
           </div>
         </div>
       </section>
+      {/* ðŸ†• Presentation Video Section */}
+      <section className="presentation-section">
+        <div className="presentation-container">
+          <div className="presentation-header">
+            <h2 className="presentation-title">Watch Our Presentation</h2>
+            <p className="presentation-subtitle">Discover how we bring ideas to life</p>
+          </div>
+          
+          <div className="video-wrapper">
+            <video 
+              className="presentation-video" 
+              controls 
+              poster="/path-to-thumbnail.jpg"
+            >
+              <source src="/presentation.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
     </>
   );
 

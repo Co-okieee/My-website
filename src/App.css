@@ -3024,3 +3024,113 @@
     font-size: 1.4rem;
   }
 }
+/* ========== ðŸŽ¥ Presentation Video Section ========== */
+
+.presentation-section {
+  padding: 6rem 2rem 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.presentation-container {
+  text-align: center;
+}
+
+.presentation-header {
+  margin-bottom: 3rem;
+}
+
+.presentation-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 0.8s ease;
+}
+
+.presentation-subtitle {
+  font-size: 1.2rem;
+  color: #7dd3fc !important;
+  font-weight: 500;
+  animation: fadeInUp 1s ease;
+}
+
+.video-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(14, 165, 233, 0.4);
+  border: 3px solid rgba(14, 165, 233, 0.3);
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(15px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 1.2s ease;
+}
+
+.video-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #0ea5e9, #06b6d4, #0ea5e9);
+  background-size: 400% 400%;
+  border-radius: 30px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: gradientFlow 8s ease infinite;
+}
+
+.video-wrapper:hover::before {
+  opacity: 0.6;
+  filter: blur(20px);
+}
+
+.video-wrapper:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 40px 100px rgba(14, 165, 233, 0.6);
+  border-color: rgba(14, 165, 233, 0.6);
+}
+
+.presentation-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 27px;
+  background: #000;
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* å"åº"å¼ */
+@media (max-width: 768px) {
+  .presentation-section {
+    padding: 4rem 1rem 6rem;
+  }
+  
+  .presentation-title {
+    font-size: 2.2rem;
+  }
+  
+  .presentation-subtitle {
+    font-size: 1rem;
+  }
+  
+  .video-wrapper {
+    border-radius: 20px;
+  }
+  
+  .presentation-video {
+    border-radius: 17px;
+  }
+}
